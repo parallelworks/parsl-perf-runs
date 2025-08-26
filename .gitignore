@@ -209,3 +209,7 @@ __marimo__/
 # slurm-docker-cluster
 slurm-docker-cluster
 
+# MLFlow logs
+mlflow.main.stdout.log
+mlflow.main.stderr.log
+

@@ -9,6 +9,7 @@ The steps for using this repository are:
 + Install system dependencies (only needed if you want to run on Kubernetes or containerized SLURM)
 + Build a Conda environment (installs Parsl and MLFlow)
 + If you will want to contribte public results, create a new branch and check it out.
++ Start local MLFlow server
 + Define a Parsl configuation
 + Run `parsl-perf` and results will be pushed into MLFlow (this can be run any number of times)
 + If you want to contribute public results, use `git` to `add`, `commit`, and `push` the results on your branch and make a pull request.
@@ -78,7 +79,13 @@ configuring the cluster. The core steps for starting the cluster are:
 TBD
 ```
 
-## 2) Run `parsl-perf` and log results with MLFlow
+## 2) Start local MLFlow server
+
+Use `step_02_start_mlflow.sh` for this step. Some 
+MLFlow server configuration options are hard-coded
+in the script and explained there.
+
+## 3) Run `parsl-perf` and log results with MLFlow
 
 The wrapper script `run-parsl-perf.py` will start a local
 MLFlow server, grab parameters (i.e. inputs) from the Parsl
