@@ -22,14 +22,16 @@ sudo usermod -aG docker $USER
 # Reset group info. This doesn't run well
 # in a script, so really the best way is
 # to exit the shell and log back in.
-newgrp docker << EOF
-EOF
+#newgrp docker << EOF
+#EOF
+# The above doesn't work, which is why
+# there is a step_00b script with the 
+# docker steps. Execute 00b after running
+# this script, closing the terminal, and
+# logging back in.
 
 # Start Docker
 sudo systemctl start docker
-
-# Test non-root user access:
-docker run hello-world
 
 echo 'Done adding user to Docker group'
 
@@ -47,29 +49,10 @@ sudo yum -y install kubectl
 echo 'Done installing kubectl'
 
 #======================================
-# Pull container for Kubernetes cluster
-#======================================
-
-# This container will need to be uploaded
-# into the kind cluster later. But, you
-# first must have a local copy.
-# See Dockerfiles directory for how this
-# container was built.
-docker pull stefanfgary/pythonparsl
-
-#======================================
 # Install Docker compose for containerized
 # (i.e. local) SLURM cluster
 #======================================
 sudo yum -y install docker-compose-plugin
 
-#======================================
-# Build container for SLURM cluster
-#======================================
-git clone https://github.com/giovtorres/slurm-docker-cluster
-# Consider adding Parsl and Flux to the container.
-cd slurm-docker-cluster
-docker build --build-arg SLURM_TAG="slurm-21-08-6-1" -t slurm-docker-cluster:21.08.6 .
-
-echo 'Done setting up.'
+echo 'Done installing system-level dependencies.'
 
