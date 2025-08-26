@@ -18,5 +18,8 @@
 # (i.e. parsl-visualize) you'll need to 
 # ensure that they aren't using the same
 # local port as MLFlow.
-mlflow server --host 127.0.0.1 --port 8081 --backend-store-uri ${pwd}/parsl-perf-archive > mlflow.main.stdout.log 2> mlflow.main.stderr.log &
+mlflow server --host 127.0.0.1 --port 8081 --backend-store-uri ${PWD}/parsl-perf-archive > mlflow.main.stdout.log 2> mlflow.main.stderr.log &
+mlflow_pid=$!
 
+echo "MLFlow started!"
+echo "To stop MLFlow, kill process $mlflow_pid"

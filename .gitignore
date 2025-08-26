@@ -213,3 +213,6 @@ slurm-docker-cluster
 mlflow.main.stdout.log
 mlflow.main.stderr.log
 
+# New versions of MFlow create this directory in the archive
+.trash
+
