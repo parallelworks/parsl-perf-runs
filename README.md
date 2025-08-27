@@ -49,21 +49,53 @@ naming convention:
 TBD
 ```
 
-Also, if you plan to run `parsl-perf` tests in a Kubernetes 
+## Start local clusters - OPTIONAL
+
+If you plan to run `parsl-perf` tests in a local Kubernetes 
 cluster or in a local, containerized SLURM cluster, now 
 would be a good time to start those clusters if you have not
-done so already. Example instructions for starting each of 
-these different types of resources are provided below.
+done so already. If you are planning on using an existing
+cluster (i.e. you have logged into a cluster or you are
+testing only on your local machine) you can skip this section.
 
-### Kubernetes cluster
+Example instructions for starting a local Kubernetes cluster
+or a local containerized Slurm cluster are provided below. Note
+that these instructions may not necessarily work everywhere.
+
+### Local Kubernetes cluster
 
 There are many flavors of Kubernetes; for simplicity here
 are instructions for using `kind` (i.e. "Kubernetes in Docker").
 `kind` is nice to use in this context because it's very quick
 to start and easy to define the number of Kubernetes worker 
-nodes as described in [the `kind` docs](https://kind.sigs.k8s.io/docs/user/quick-start/#multi-node-clusters). The core steps are:
+nodes as described in [the `kind` docs](https://kind.sigs.k8s.io/docs/user/quick-start/#multi-node-clusters).
+
+An example `kind` cluster configuration with two nodes 
+(to match the default two node config in the local 
+containerized SLURM cluster) and a `Dockerfile` for the
+worker image are provided in the `k8s` directory. The core steps are:
 ```
-TBD
+# Make certain you have access to kind executables
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# The controller node should come up in about a minute.
+kind create cluster --name <my_cluster_name> --config <my_cluster_config>
+
+# The name defaults to `kind` which results in the the
+# kubectl context of `kind-<my_name>` or `kind-kind`.
+# You can use kind to list the available clusters:
+kind get clusters
+
+# What's going on with the cluster:
+kubectl cluster-info --context kind-kind
+kubectl get pods --context kind-kind
+
+# If you want to use a specific container in
+# the cluster, you need to load it into the cluster
+# (--name is the name of the KIND cluster, and first
+# arguement after docker-image is the name of the image
+# that is already pulled locally).
+kind load docker-image stefanfgary/pythonparsl --name <my_cluster_name>
 ```
 
 ### Local, containerized Slurm cluster
@@ -76,7 +108,40 @@ The former is described succintly in [this blog post](https://medium.com/analyti
 because it seems to be more up to date and provides more options for
 configuring the cluster. The core steps for starting the cluster are:
 ```
-TBD
+# Build/get the cluster container image
+# (This is already done in step_00b_docker_steps.sh)
+
+# If on a PW cloud cluster head node, stop
+# the SLURM daemon and database services
+# because they are listening on port 6819
+# which is used by the docker-compose SLURM
+# cluster. There's got to be a way around this,
+# but just tear things down for now.
+sudo systemctl stop slurmctld.service
+sudo systemctl stop slurmdbd.service
+
+# Get the repo with the Docker-compose file:
+# (Already done in step_00b_docker_steps.sh)
+cd slurm-docker-cluster
+
+# Launch the cluster
+docker-compose up -d
+
+# Register
+./register_cluster.sh
+
+# Easy enough to add more nodes (containers) on the fly.
+# Modify slurm.conf in three places - the two lists of nodes in 
+# NodeName and PartitionName, and MaxNodes in PartitionName.
+# Then run:
+./update_slurmfiles.sh slurm.conf slurmdbd.conf
+docker compose restart
+
+# Stop
+docker compose stop
+
+# Clean up
+docker compose down -v
 ```
 
 ## 2) Start local MLFlow server

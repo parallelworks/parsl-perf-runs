@@ -25,9 +25,10 @@ docker pull stefanfgary/pythonparsl
 #======================================
 # Build container for SLURM cluster
 #======================================
-git clone https://github.com/giovtorres/slurm-docker-cluster
-# Consider adding Parsl and Flux to the container.
+git clone https://github.com/stefangary/slurm-docker-cluster
+# Consider adding Flux to the container.
 cd slurm-docker-cluster
+git checkout add-py39-parsl
 docker build --build-arg SLURM_TAG="slurm-21-08-6-1" -t slurm-docker-cluster:21.08.6 .
 
 echo 'Done with Docker steps.'

@@ -52,7 +52,25 @@ echo 'Done installing kubectl'
 # Install Docker compose for containerized
 # (i.e. local) SLURM cluster
 #======================================
+
+# Gives you access to docker compose
+# (NOTE THE SPACE!!!! Not hyphenated docker-compose.)
 sudo yum -y install docker-compose-plugin
+
+# Just in case you need it...
+alias docker-compose='docker compose'
+
+# Alternative methods to installing docker-compose
+#------------------------
+# Never worked for me, but I wasn't particularly
+# careful about my Conda env at the time.
+# pip install docker-compose
+#------------------------
+# This did work but more complicated, based on docs:
+# https://docs.docker.com/compose/install/linux/#install-the-plugin-manually
+#DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+#mkdir -p $DOCKER_CONFIG/cli-plugins
+#curl -SL https://github.com/docker/compose/releases/download/v2.39.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 
 echo 'Done installing system-level dependencies.'
 
