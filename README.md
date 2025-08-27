@@ -56,7 +56,8 @@ cluster or in a local, containerized SLURM cluster, now
 would be a good time to start those clusters if you have not
 done so already. If you are planning on using an existing
 cluster (i.e. you have logged into a cluster or you are
-testing only on your local machine) you can skip this section.
+testing only on your local machine) you can skip this section 
+and go right to the section `Start local MLFlow server`.
 
 Example instructions for starting a local Kubernetes cluster
 or a local containerized Slurm cluster are provided below. Note
@@ -102,8 +103,10 @@ kind load docker-image stefanfgary/pythonparsl --name <my_cluster_name>
 
 There are at least two public containerized Slurm cluster
 frameworks:
+
 + [rancavil/slurm-cluster](https://github.com/rancavil/slurm-cluster/)
 + [giovtorres/slurm-docker-cluster](https://github.com/giovtorres/slurm-docker-cluster)
+
 The former is described succintly in [this blog post](https://medium.com/analytics-vidhya/slurm-cluster-with-docker-9f242deee601). The latter is used here mostly 
 because it seems to be more up to date and provides more options for
 configuring the cluster. The core steps for starting the cluster are:
