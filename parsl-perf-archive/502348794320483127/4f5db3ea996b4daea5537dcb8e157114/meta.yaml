@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/4f5db3ea996b4daea5537dcb8e157114/artifacts
+end_time: 1756355505890
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 4f5db3ea996b4daea5537dcb8e157114
+run_name: monumental-newt-508
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756355505307
+status: 3
+tags: []
+user_id: sfgary

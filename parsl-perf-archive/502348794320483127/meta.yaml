@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/502348794320483127
+creation_time: 1756354215980
+experiment_id: '502348794320483127'
+last_update_time: 1756354215980
+lifecycle_stage: active
+name: parsl-perf-exp-01

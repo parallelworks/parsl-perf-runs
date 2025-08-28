@@ -156,6 +156,33 @@ in the script and explained there. You can view
 the MLFlow GUI by pointing a new browser tab
 on the same local computer to `localhost:8081`.
 
+The atomic unit of organization within MLFlow is the 
+run. Runs are grouped into experiments. MLFlow experiments
+are comparable to a "context" or a Conda environment. You
+activate the experiment, push a bunch of runs into it, and
+then can activate another experiment, etc. For now, I'll 
+assume we're going to use just one experiment because it 
+currently seems hard to me to compare runs across experiments 
+in MLFlow. The experiment used here was created in 
+`./parsl-perf-archive` with:
+```
+import mlflow
+from mlflow import MlflowClient
+
+client = MlflowClient(tracking_uri = "http://127.0.0.1:8081")
+mlflow.set_tracking_uri("http://127.0.0.1:8081")
+
+experiment_name="parsl-perf-exp-01"
+experiment_tags = {
+    "mlflow.note.content": "Archive the results of parsl-perf across many resources."
+}
+
+# Create the experiment with a unique name
+experiment = client.create_experiment(
+    name=experiment_name, tags=experiment_tags
+)
+```
+
 ## 3) Run `parsl-perf` and log results with MLFlow
 
 The wrapper script `run-parsl-perf.py` will start a local

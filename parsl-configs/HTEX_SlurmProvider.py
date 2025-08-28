@@ -33,13 +33,14 @@ config = Config(
     executors = [
         HighThroughputExecutor(
             label = exec_label,
-            cores_per_worker =  cores_per_node,
+            cores_per_worker = cores_per_node,
             worker_debug = True,            
             working_dir =  os.getcwd(),
             worker_logdir_root = os.getcwd(),
             provider = SlurmProvider(
                 partition = partition,
                 nodes_per_block = nodes_per_block,
+                cores_per_node = cores_per_node,
                 min_blocks = 0,
                 max_blocks = 2,
                 walltime ="01:00:00",
