@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/6b830c59d056412796379faf95eb5f59/artifacts
+end_time: 1756406971087
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 6b830c59d056412796379faf95eb5f59
+run_name: likeable-snipe-733
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756406968808
+status: 3
+tags: []
+user_id: sfg

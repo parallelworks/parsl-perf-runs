@@ -95,9 +95,13 @@ for executor in parsl_config_module.config.executors:
     nodes_per_block = executor.provider.nodes_per_block
     print('Found nodes_per_block: '+str(nodes_per_block))
 
-    # Cannot specify cores_per_node for LocalProvider
+    # Cannot get cores_per_node for LocalProvider or
+    # KubernetesProvider?
     if provider_name == 'LocalProvider':
         cores_per_node = os.cpu_count()
+    elif provider_name == 'KubernetesProvider':
+        # I don't know if this is strictly correct
+        cores_per_node = executor.provider.max_cpu
     else:
         cores_per_node = executor.provider.cores_per_node
     print('Found cores_per_node: '+str(cores_per_node))
