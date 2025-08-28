@@ -20,9 +20,9 @@ SLURM cluster
 ##############
 # Parameters #
 ##############
-cores_per_node = 1
+cores_per_node = 30
 nodes_per_block = 1
-partition = "normal"
+partition = "biggest"
 exec_label = 'slurm_provider'
 
 ##########
@@ -33,20 +33,22 @@ config = Config(
     executors = [
         HighThroughputExecutor(
             label = exec_label,
-            cores_per_worker = cores_per_node,
+            cores_per_worker = 0.1,
             worker_debug = True,            
             working_dir =  os.getcwd(),
             worker_logdir_root = os.getcwd(),
             provider = SlurmProvider(
                 partition = partition,
-                nodes_per_block = nodes_per_block,
-                cores_per_node = cores_per_node,
+                nodes_per_block = 1,
+                cores_per_node = None,
                 min_blocks = 0,
-                max_blocks = 2,
+                max_blocks = 30,
                 walltime ="01:00:00",
                 launcher = SimpleLauncher(),
                 parallelism = float(1),
-                worker_init = "source /data/miniconda/etc/profile.d/conda.sh; conda activate base"
+                worker_init = "source /home/sfgary/.miniconda/etc/profile.d/conda.sh; conda activate parsl-mlflow",
+                exclusive=True
+
             )
         )
     ]

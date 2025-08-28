@@ -106,6 +106,10 @@ for executor in parsl_config_module.config.executors:
         cores_per_node = executor.provider.cores_per_node
     print('Found cores_per_node: '+str(cores_per_node))
 
+    # Special case for SlurmProvider
+    if cores_per_node is None:
+        cores_per_node = os.cpu_count()
+
     min_blocks = executor.provider.min_blocks
     print('Found min_blocks: '+str(min_blocks))
 
