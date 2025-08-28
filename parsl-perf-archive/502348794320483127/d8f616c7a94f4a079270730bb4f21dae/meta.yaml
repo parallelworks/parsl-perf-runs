@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/d8f616c7a94f4a079270730bb4f21dae/artifacts
+end_time: 1756368337376
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: d8f616c7a94f4a079270730bb4f21dae
+run_name: hilarious-elk-574
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756368336071
+status: 3
+tags: []
+user_id: sfgary

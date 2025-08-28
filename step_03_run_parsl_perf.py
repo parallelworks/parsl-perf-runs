@@ -110,7 +110,10 @@ for executor in parsl_config_module.config.executors:
     print('Found max_blocks: '+str(max_blocks))
 
     # Handy derived parameters
-    max_nodes = nodes_per_block*max_blocks
+    if provider_name == 'LocalProvider':
+        max_nodes = 1
+    else:
+        max_nodes = nodes_per_block*max_blocks
     max_cores = cores_per_node*max_nodes
     print('Calculated max_nodes: '+str(max_nodes))
     print('Calculated max_cores: '+str(max_cores))

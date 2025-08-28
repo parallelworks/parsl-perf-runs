@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/20a1205c703a4b82843d4c44d94a569a/artifacts
+end_time: 1756368212306
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 20a1205c703a4b82843d4c44d94a569a
+run_name: unique-snail-868
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756368211174
+status: 3
+tags: []
+user_id: sfgary

@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/b1ce8641de484049a5a93f4dd4e98056/artifacts
+end_time: 1756368676101
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: b1ce8641de484049a5a93f4dd4e98056
+run_name: orderly-crane-846
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756368674827
+status: 3
+tags: []
+user_id: sfgary
