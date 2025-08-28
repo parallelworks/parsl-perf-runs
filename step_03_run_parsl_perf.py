@@ -11,6 +11,7 @@ import os
 import importlib.util
 import mlflow
 from mlflow import MlflowClient
+import subprocess
 
 try:
     print('Will run parsl-perf based on this config file:')
@@ -118,6 +119,38 @@ for executor in parsl_config_module.config.executors:
 # Run parsl-perf and gather metrics
 #=====================================
 
+try:
+    result = subprocess.run(
+            ['parsl-perf', '--config', os.path.abspath(sys.argv[1])], 
+            capture_output=True, text=True, check=True)
+    print("STDOUT:")
+    print(result.stdout)
+    print("STDERR:")
+    print(result.stderr)
+except subprocess.CalledProcessError as e:
+    print(f"Command failed with exit code {e.returncode}")
+    print(f"Error output: {e.stderr}")
+
+parsl_version = result.stdout.split('\n')[0]
+
+num_iterations = int(len(result.stdout.split('Iteration')) - 1)
+
+# Loop over all iterations, but currently only store
+# the results from the last iteration (each successive
+# iteration's results overwrites the previous iteration's
+# results. This results in excess computations, but provides
+# a framework that could be used to store all iteration results
+# later, if desired.
+#
+# Also, the text parsing here will need to be changed if the
+# stdout of parsl-perf changes significantly.
+for ii in range(1,len(result.stdout.split('Iteration'))):
+    num_tasks = int(result.stdout.split('Iteration')[ii].split(' ')[4])
+    submission_s = float(result.stdout.split('Iteration')[ii].split(' ')[23])
+    submission_tps = float(result.stdout.split('Iteration')[ii].split(' ')[26])
+    runtime_s = float(result.stdout.split('Iteration')[ii].split(' ')[29].split('s')[0])
+    runtime_tps = float(result.stdout.split('Iteration')[ii].split(' ')[35].split('\n')[0])
+
 #============================================
 # Log tags, parameters, and metrics to MLFlow
 #============================================
@@ -135,6 +168,7 @@ experiment = mlflow.set_experiment(experiment_name)
 with mlflow.start_run(
     run_name=run_name,
     tags={
+        "Parsl version": parsl_version,
         "Parsl Executor": executor_name, 
         "Parsl Provider": provider_name,
     }):
@@ -146,9 +180,12 @@ with mlflow.start_run(
     mlflow.log_param("max_nodes", max_nodes)
     mlflow.log_param("max_cores", max_cores)
 
-    mlflow.log_metric("runtime",42.42)
-    mlflow.log_metric("other metric",52.52)
-
+    mlflow.log_metric("num_iterations",num_iterations)
+    mlflow.log_metric("num_tasks",num_tasks)
+    mlflow.log_metric("submission_s",submission_s)
+    mlflow.log_metric("submission_tps",submission_tps)
+    mlflow.log_metric("runtime_s",runtime_s)
+    mlflow.log_metric("runtime_tps",runtime_tps)
 
 #========
 # Done!

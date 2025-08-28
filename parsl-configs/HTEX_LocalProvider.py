@@ -20,8 +20,8 @@ Local node only
 ##############
 # Parameters #
 ##############
-cores_per_node = 2
-nodes_per_block = 2
+cores_per_node = 1 #os.cpu_count()
+nodes_per_block = 1
 exec_label = 'local_provider'
 
 ##########
@@ -32,16 +32,15 @@ config = Config(
     executors = [
         HighThroughputExecutor(
             label = exec_label,
-            cores_per_worker =  cores_per_node,
+            cores_per_worker = cores_per_node,
             worker_debug = True,            
             working_dir =  os.getcwd(),
             worker_logdir_root = os.getcwd(),
             provider = LocalProvider(
                 nodes_per_block = nodes_per_block,
                 min_blocks = 0,
-                max_blocks = 2,
-                parallelism = float(1),
-                worker_init = "source /home/sfg/work_git/miniconda/etc/profile.d/conda.sh; conda activate base"
+                max_blocks = 8,
+                parallelism = float(1)
             )
         )
     ]

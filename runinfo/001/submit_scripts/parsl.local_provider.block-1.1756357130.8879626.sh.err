@@ -1,0 +1,8 @@
+/home/sfgary/parsl-perf-runs/runinfo/001/submit_scripts/parsl.local_provider.block-1.1756357130.8879626.sh: line 1: /home/sfg/work_git/miniconda/etc/profile.d/conda.sh: No such file or directory
+
+CondaError: Run 'conda init' before 'conda activate'
+
+/home/sfgary/.miniconda/envs/parsl-mlflow/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 7 leaked semaphore objects to clean up at shutdown: {'/mp-3wcuhy_z', '/mp-8psp2n3p', '/mp-ncaate59', '/mp-e1p3txte', '/mp-rw9gdbzm', '/mp-2racps60', '/mp-ssoi4_b3'}
+  warnings.warn(
+/home/sfgary/.miniconda/envs/parsl-mlflow/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 7 leaked semaphore objects to clean up at shutdown: {'/mp-2eh16k51', '/mp-gejne20o', '/mp-y41xg3rh', '/mp-wgl3rzjt', '/mp-gweebo1b', '/mp-ttbdrthp', '/mp-f_tuawdw'}
+  warnings.warn(

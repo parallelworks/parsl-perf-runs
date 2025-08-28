@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/d6b700a14dd541bbbbe3914263211750/artifacts
+end_time: 1756361801396
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: d6b700a14dd541bbbbe3914263211750
+run_name: likeable-shad-702
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756361799998
+status: 3
+tags: []
+user_id: sfgary

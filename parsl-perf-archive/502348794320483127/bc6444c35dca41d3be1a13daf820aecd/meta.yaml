@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/bc6444c35dca41d3be1a13daf820aecd/artifacts
+end_time: 1756361200063
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: bc6444c35dca41d3be1a13daf820aecd
+run_name: stately-ox-922
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756361198786
+status: 3
+tags: []
+user_id: sfgary

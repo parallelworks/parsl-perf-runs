@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/972c209710d74768bdb2346736c033dc/artifacts
+end_time: 1756361362140
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 972c209710d74768bdb2346736c033dc
+run_name: suave-cub-967
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756361360780
+status: 3
+tags: []
+user_id: sfgary

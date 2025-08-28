@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/e127416257924e0bb371f2d9268c9f97/artifacts
+end_time: 1756361618828
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: e127416257924e0bb371f2d9268c9f97
+run_name: capricious-toad-264
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756361617412
+status: 3
+tags: []
+user_id: sfgary
