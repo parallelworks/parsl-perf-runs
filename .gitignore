@@ -216,3 +216,6 @@ mlflow.main.stderr.log
 # New versions of MFlow create this directory in the archive
 .trash
 
+# Ignore Parsl logs from runs
+runinfo
+

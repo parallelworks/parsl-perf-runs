@@ -21,7 +21,7 @@ Kubernetes cluster
 ##############
 max_cpu = 1
 cores_per_worker = 1
-nodes_per_block = 1
+nodes_per_block = 2
 namespace = "default"
 exec_label = 'parsl-perf_kubernetes_provider'
 
@@ -43,7 +43,7 @@ config = Config(
                 nodes_per_block = nodes_per_block,
                 min_blocks = 0,
                 init_blocks = 1,
-                max_blocks = 1,
+                max_blocks = 8,
                 max_cpu = max_cpu,
                 max_mem = "2Gi",
                 parallelism = float(1),

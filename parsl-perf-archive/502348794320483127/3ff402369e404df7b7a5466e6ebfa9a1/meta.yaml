@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/3ff402369e404df7b7a5466e6ebfa9a1/artifacts
+end_time: 1756415104465
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 3ff402369e404df7b7a5466e6ebfa9a1
+run_name: 16cpu32gb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756415103322
+status: 3
+tags: []
+user_id: sfgary

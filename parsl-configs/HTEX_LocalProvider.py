@@ -20,7 +20,7 @@ Local node only
 ##############
 # Parameters #
 ##############
-cores_per_node = 1 #os.cpu_count()
+cores_per_node = os.cpu_count()
 nodes_per_block = 1
 exec_label = 'local_provider'
 
@@ -39,7 +39,7 @@ config = Config(
             provider = LocalProvider(
                 nodes_per_block = nodes_per_block,
                 min_blocks = 0,
-                max_blocks = 8,
+                max_blocks = 16,
                 parallelism = float(1)
             )
         )
