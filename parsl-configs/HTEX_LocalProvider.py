@@ -39,7 +39,7 @@ config = Config(
             provider = LocalProvider(
                 nodes_per_block = nodes_per_block,
                 min_blocks = 0,
-                max_blocks = 4,
+                max_blocks = 8,
                 parallelism = float(1)
             )
         )

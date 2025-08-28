@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/4110b102f79342758bda4870940fe8c4/artifacts
+end_time: 1756369638109
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 4110b102f79342758bda4870940fe8c4
+run_name: charming-sow-394
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756369636839
+status: 3
+tags: []
+user_id: sfgary

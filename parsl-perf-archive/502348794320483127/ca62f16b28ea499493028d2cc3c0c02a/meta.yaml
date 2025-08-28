@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/ca62f16b28ea499493028d2cc3c0c02a/artifacts
+end_time: 1756369405651
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: ca62f16b28ea499493028d2cc3c0c02a
+run_name: shivering-ox-264
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756369404386
+status: 3
+tags: []
+user_id: sfgary

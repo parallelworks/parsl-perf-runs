@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/502348794320483127/9e718f46bfe640e78b5f5e41de911c9b/artifacts
+end_time: 1756369181699
+entry_point_name: ''
+experiment_id: '502348794320483127'
+lifecycle_stage: active
+run_id: 9e718f46bfe640e78b5f5e41de911c9b
+run_name: industrious-ant-755
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756369180374
+status: 3
+tags: []
+user_id: sfgary
