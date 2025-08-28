@@ -8,10 +8,11 @@ clusters.
 The steps for using this repository are:
 + Install system dependencies (only needed if you want to run on Kubernetes or containerized SLURM)
 + Build a Conda environment (installs Parsl and MLFlow)
-+ If you will want to contribte public results, create a new branch and check it out.
++ If you will want to contribute public results, create a new branch and check it out.
 + Start local MLFlow server
 + Define a Parsl configuation
-+ Run `parsl-perf` and results will be pushed into MLFlow (this can be run any number of times)
++ Run `parsl-perf` and results will be pushed into MLFlow (this can be rerun many times)
++ When benchmarking is complete, shut down MLFlow
 + If you want to contribute public results, use `git` to `add`, `commit`, and `push` the results on your branch and make a pull request.
 
 ## 0) System dependencies
@@ -151,7 +152,9 @@ docker compose down -v
 
 Use `step_02_start_mlflow.sh` for this step. Some 
 MLFlow server configuration options are hard-coded
-in the script and explained there.
+in the script and explained there. You can view
+the MLFlow GUI by pointing a new browser tab
+on the same local computer to `localhost:8081`.
 
 ## 3) Run `parsl-perf` and log results with MLFlow
 
@@ -160,6 +163,18 @@ MLFlow server, grab parameters (i.e. inputs) from the Parsl
 configuration, run `parsl-perf` with the Parsl configuration,
 and log the metrics (i.e. runtime outputs) to MLFlow.
 ```
-run-parsl-perf.py <my_parsl_config.py>
+run-parsl-perf.py </path/to/my_parsl_config.py> <my_run_name>
 ```
+This step can be repeated many times if desired and each trial
+is logged as a run in MLFlow. The run name does not need to be
+unique (it can be the same from run-to-run). I think it might
+be useful to provide a short description of the cluster in
+the run name (e.g. `cloud_slurm_cluster`).
+
+## 4) Stop the local MLFlow server
+
+Use `step_04_stop_mlflow.sh` to shut down the 
+MLFlow server when you are done using it. You do
+not need to explicitly "save" the state of the
+files in MLFlow.
 
