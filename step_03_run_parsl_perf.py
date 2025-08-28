@@ -16,6 +16,13 @@ try:
 except:
     print('Must provide name of Parsl config file on command line!')
 
+try:
+    print('Will set run name to input on command line:')
+    print(sys.argv[2])
+    run_name = sys.argv[2]
+except
+    print('Must provide a run name. It does not need to be unique.')
+
 #=====================================
 # Load the Parsl config
 #=====================================
